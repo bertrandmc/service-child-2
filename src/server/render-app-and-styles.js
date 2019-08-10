@@ -5,23 +5,24 @@ import { PlacesToStay } from '../shared/PlacesToStay';
 
 export const renderAppMarkupAndStyles = async () => {
   const sheet = new ServerStyleSheet();
-  let markup;
-  let styleTags;
+  let html;
+  let styles;
   let data;
   try {
     data = await PlacesToStay.getData();
-    markup = renderToString(sheet.collectStyles(
+    html = renderToString(sheet.collectStyles(
       <PlacesToStay {...data} />
     ));
-    styleTags = sheet.getStyleTags();
+    styles = sheet.getStyleTags();
   } catch (error) {
     console.error(error)
   } finally {
     sheet.seal()
   }
   return {
-    markup,
-    styleTags,
+    html,
+    styles,
+    scriptUrls: ['http://localhost:3003/PlacesToStay.js'],
     data
   }
 };
