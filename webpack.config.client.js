@@ -1,4 +1,5 @@
 const path = require('path');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
   devtool: "source-map",
@@ -44,5 +45,11 @@ module.exports = {
       commonjs2: "styled-components",
       root: "styled"
     }
-  }
+  },
+  plugins: [new BundleAnalyzerPlugin({
+    analyzerMode: 'static',
+    defaultSizes: 'gzip',
+    reportFilename: './bundle-analyzer/client.html',
+    openAnalyzer: false
+  })]
 };

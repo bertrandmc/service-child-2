@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.5.5",
+    "cors": "^2.8.5",
     "culturetrip-ui": "github:culture-trip/culturetrip-ui#ad1d6e7cb70010e8f9ad2dd501574820d4124e5b",
     "express": "^4.17.1",
     "node-fetch": "^2.6.0",
@@ -27,6 +28,7 @@
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.6",
     "babel-plugin-styled-components": "^1.10.6",
+    "webpack-bundle-analyzer": "^3.4.1",
     "webpack-cli": "^3.3.6"
   }
 }
