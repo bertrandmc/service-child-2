@@ -40,11 +40,12 @@ export class PlacesToStay extends React.Component {
     super(props);
     const { images } = props;
     this.state = {
-      images: images || (window && window.PlacesToStayData && window.PlacesToStayData.images)
+      images
     };
   }
+
   componentDidMount() {
-    if (!window.PlacesToStayData || !window.PlacesToStayData.images) {
+    if (!this.state.images) {
       PlacesToStay.getData()
         .then(({images}) => this.setState({images}))
     }
