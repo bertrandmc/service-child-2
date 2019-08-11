@@ -2,6 +2,7 @@ import React from 'react';
 import { ServerStyleSheet } from 'styled-components';
 import { renderToString } from 'react-dom/server';
 import { PlacesToStay } from '../shared/PlacesToStay';
+import { StaticRouter } from 'react-router-dom';
 
 export const renderAppMarkupAndStyles = async () => {
   const sheet = new ServerStyleSheet();
@@ -10,8 +11,12 @@ export const renderAppMarkupAndStyles = async () => {
   let data;
   try {
     data = await PlacesToStay.getData();
+    // The StaticRouter is present ONLY so that React Router won't throw a compile error - any usages of <Link />
+    // within this app have to be wrapped in a router. All actual routing is handled by the parent app
     html = renderToString(sheet.collectStyles(
-      <PlacesToStay {...data} />
+      <StaticRouter>
+        <PlacesToStay {...data} />
+      </StaticRouter>
     ));
     styles = sheet.getStyleTags();
   } catch (error) {

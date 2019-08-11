@@ -44,6 +44,11 @@ module.exports = {
       commonjs: "styled-components",
       commonjs2: "styled-components",
       root: "styled"
+    },
+    'react-router-dom': {
+      root: 'ReactRouterDOM',
+      commonjs: 'react-router-dom',
+      commonjs2: 'react-router-dom'
     }
   },
   plugins: [new BundleAnalyzerPlugin({
